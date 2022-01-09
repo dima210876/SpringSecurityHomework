@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User list page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h2>Spring Security Example</h2>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a href="../">Home page</a></li>
+                <li class="active"><a href="#">UserList</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container text-center">
+            <h1 class="title text-primary">User list page</h1>
+        </div>
+        <br>
+        <div class="container text-center">
+            <h3 class="text-primary">Users info</h3>
+        </div>
+        <div th:switch="${currentUser.role}" class="container">
+            <table th:case="admin" class="table table-bordered table-striped table-hover table-condensed text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Firstname</th>
+                        <th class="text-center">Password</th>
+                        <th class="text-center">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${userList}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.firstname}"></td>
+                        <td th:text="${user.password}"></td>
+                        <td th:text="${user.role}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table th:case="*" class="table table-bordered table-striped table-hover table-condensed text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Firstname</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.firstname}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
