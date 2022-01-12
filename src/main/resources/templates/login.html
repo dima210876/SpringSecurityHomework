@@ -8,24 +8,32 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <div th:if="${param.logout != null}" class="alert alert-success" role="alert">
-            You have been signed out
+    <header>
+        <div class="container">
+            <h3 th:text="${applicationName}"></h3>
         </div>
-        <div th:if="${param.error != null}" class="alert alert-danger" role="alert">
-            Wrong username or password
+    </header>
+    <main>
+        <div class="container mt-5">
+            <form class="form-signin" method="post" action="/login">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <div th:if="${param.logout != null}" class="alert alert-success" role="alert">
+                    You have been signed out
+                </div>
+                <div th:if="${param.error != null}" class="alert alert-danger" role="alert">
+                    Wrong username or password
+                </div>
+                <p>
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Email" required="" autofocus="">
+                </p>
+                <p>
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+                </p>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
         </div>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Email" required="" autofocus="">
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-</div>
-</body></html>
+    </main>
+</body>
+</html>
